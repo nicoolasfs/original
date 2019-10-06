@@ -1,0 +1,191 @@
+//Generador señales SOS (morse)
+const int TriggerPin = PB10;
+const int EchoPin = PB11;
+const int BombilloBlanco= PB6;
+const int BombilloVerde= PB7;
+const int BombilloAmarillo= PB1;
+const int BombilloRojo= PB9;
+const int Zumbador =PA10;
+void setup() {
+Serial.begin(9600);
+  pinMode(TriggerPin, OUTPUT);
+  pinMode(EchoPin, INPUT);
+  pinMode(BombilloBlanco,OUTPUT);
+  pinMode(BombilloVerde,OUTPUT);
+  pinMode(BombilloAmarillo,OUTPUT);
+  pinMode(BombilloRojo,OUTPUT);
+  pinMode(Zumbador, OUTPUT);
+}
+
+void loop()
+{
+  int cm = ping(TriggerPin, EchoPin);
+  Serial.print("Distancia: ");
+  Serial.println(cm);
+  delay(1000);
+  Serial.println("Señal SOS luz y sonido");
+}
+int ping(int TriggerPin, int EchoPin) {
+  long duration, distanceCm;
+ 
+  digitalWrite(TriggerPin, LOW);  
+  delayMicroseconds(2);
+  digitalWrite(TriggerPin, HIGH);  //generamos Trigger (disparo) de 5ms
+  delayMicroseconds(5);
+  digitalWrite(TriggerPin, LOW);
+ 
+  duration = pulseIn(EchoPin, HIGH);  //medimos el tiempo entre pulsos, en microseg
+ 
+  distanceCm = duration * 10 / 292/ 2;   //convertimos a distancia, en cm
+ 
+  if (distanceCm <10){
+     digitalWrite(BombilloBlanco,HIGH);
+     delay(500);
+    digitalWrite(BombilloBlanco,HIGH);
+    delay(500);
+    digitalWrite(BombilloBlanco,HIGH);
+    delay(1000);
+    digitalWrite(BombilloBlanco,HIGH);
+    delay(1000);
+    digitalWrite(BombilloBlanco,HIGH);
+    delay(1000);
+    digitalWrite(BombilloBlanco,HIGH);
+    delay(1000);
+      digitalWrite(BombilloBlanco,HIGH);
+     delay(500);
+    digitalWrite(BombilloBlanco,HIGH);
+    delay(500);
+    digitalWrite(BombilloBlanco,HIGH);
+  digitalWrite(BombilloVerde,LOW);
+  digitalWrite(BombilloAmarillo,LOW);
+  digitalWrite(BombilloRojo,HIGH);
+ digitalWrite(Zumbador,HIGH);
+ delay(500);
+ digitalWrite(Zumbador,HIGH);
+ delay(500);
+  digitalWrite(Zumbador,HIGH);
+  delay(1000);
+   digitalWrite(Zumbador,HIGH);
+ delay(1000);
+ digitalWrite(Zumbador,HIGH);
+ delay(1000);
+  digitalWrite(Zumbador,HIGH);
+  delay(500);
+  digitalWrite(Zumbador,HIGH);
+ delay(500);
+ digitalWrite(Zumbador,HIGH);
+ delay(500);
+  digitalWrite(Zumbador,HIGH);
+
+ }
+ else
+ if(distanceCm<=25 && distanceCm>=10){
+     digitalWrite(BombilloRojo,HIGH);
+     delay(500);
+    digitalWrite(BombilloRojo,HIGH);
+    delay(500);
+    digitalWrite(BombilloRojo,HIGH);
+    delay(1000);
+    digitalWrite(BombilloRojo,HIGH);
+    delay(1000);
+    digitalWrite(BombilloRojo,HIGH);
+    delay(1000);
+    digitalWrite(BombilloRojo,HIGH);
+    delay(1000);
+      digitalWrite(BombilloRojo,HIGH);
+     delay(500);
+    digitalWrite(BombilloRojo,HIGH);
+    delay(500);
+    digitalWrite(BombilloRojo,HIGH);
+ digitalWrite(Zumbador,HIGH);
+ delay(500);
+ digitalWrite(Zumbador,HIGH);
+ delay(500);
+  digitalWrite(Zumbador,HIGH);
+  delay(500);
+   digitalWrite(Zumbador,HIGH);
+ delay(500);
+ digitalWrite(Zumbador,HIGH);
+ delay(500);
+  digitalWrite(Zumbador,HIGH);
+  delay(500);
+  digitalWrite(Zumbador,HIGH);
+ delay(500);
+ digitalWrite(Zumbador,HIGH);
+ delay(500);
+  digitalWrite(Zumbador,HIGH);
+}
+else if(distanceCm=35){
+ digitalWrite(BombilloRojo,HIGH);
+     delay(500);
+    digitalWrite(BombilloRojo,HIGH);
+    delay(500);
+    digitalWrite(BombilloRojo,HIGH);
+    delay(500);
+    digitalWrite(BombilloRojo,HIGH);
+    delay(500);
+    digitalWrite(BombilloRojo,HIGH);
+    delay(500);
+    digitalWrite(BombilloRojo,HIGH);
+    delay(500);
+      digitalWrite(BombilloRojo,HIGH);
+     delay(500);
+    digitalWrite(BombilloRojo,HIGH);
+    delay(500);
+    digitalWrite(BombilloRojo,HIGH);
+
+     digitalWrite(BombilloAmarillo,HIGH);
+     delay(500);
+    digitalWrite(BombilloAmarillo,HIGH);
+    delay(500);
+    digitalWrite(BombilloAmarillo,HIGH);
+    delay(500);
+    digitalWrite(BombilloAmarillo,HIGH);
+    delay(500);
+    digitalWrite(BombilloAmarillo,HIGH);
+    delay(500);
+    digitalWrite(BombilloAmarillo,HIGH);
+    delay(500);
+      digitalWrite(BombilloAmarillo,HIGH);
+     delay(500);
+    digitalWrite(BombilloAmarillo,HIGH);
+    delay(500);
+    digitalWrite(BombilloAmarillo,HIGH);
+
+    
+     digitalWrite(BombilloBlanco,HIGH);
+     delay(500);
+    digitalWrite(BombilloBlanco,HIGH);
+    delay(500);
+    digitalWrite(BombilloBlanco,HIGH);
+    delay(500);
+    digitalWrite(BombilloBlanco,HIGH);
+    delay(500);
+    digitalWrite(BombilloBlanco,HIGH);
+    delay(500);
+    digitalWrite(BombilloBlanco,HIGH);
+    delay(500);
+      digitalWrite(BombilloBlanco,HIGH);
+     delay(500);
+    digitalWrite(BombilloBlanco,HIGH);
+    delay(500);
+    digitalWrite(BombilloBlanco,HIGH);
+ digitalWrite(Zumbador,HIGH);
+ delay(500);
+ digitalWrite(Zumbador,HIGH);
+ delay(500);
+  digitalWrite(Zumbador,HIGH);
+  delay(500);
+   digitalWrite(Zumbador,HIGH);
+ delay(500);
+ digitalWrite(Zumbador,HIGH);
+ delay(500);
+  digitalWrite(Zumbador,HIGH);
+  delay(500);
+  digitalWrite(Zumbador,HIGH);
+ delay(500);
+ digitalWrite(Zumbador,HIGH);
+ delay(500);
+  digitalWrite(Zumbador,HIGH);
+}
+}
